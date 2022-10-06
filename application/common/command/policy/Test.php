@@ -14,29 +14,19 @@ use app\common\service\policy\Test as Service;
  */
 class Test extends Command
 {
+    protected $params=[
+        'symbol'=>'btcusdt',//'ethusdt','ltcusdt','eosusdt','etcusdt'
+    ];
     protected function configure()
     {
         $this->setName('policy_test')
-        ->addOption(
-            'symbol',
-            null,
-            Option::VALUE_REQUIRED,
-            'Which symbol do you like?'
-        )
         ->setDescription('');
     }
 
     protected function execute(Input $input, Output $output)
     {
-        $symbol=trim($input->getOption('symbol'));
-        $list=['btcusdt','ethusdt','ltcusdt','eosusdt','etcusdt'];
-        if (!in_array($symbol, $list)) {
-            $output->writeln("symbol not exist");
-            return;
-        }
-        $output->writeln("symbol:".$symbol);
         $res=(new Service())
-            ->setParams([])
+            ->setParams($this->params)
             ->run();
         if ($res['code']!=0) {
             $output->writeln($res['msg']);

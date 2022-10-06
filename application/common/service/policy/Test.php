@@ -9,7 +9,10 @@ use app\common\service\BaseService;
 
 class Test extends BaseService
 {
-    protected $params;
+    protected $params=[];
+    protected $account=[];
+    protected $orders=[];
+    protected $result=[];
     public function __construct()
     {
     }
@@ -24,6 +27,6 @@ class Test extends BaseService
     public function run()
     {
         // return alert_info(1, 'error');
-        return alert_info(0, 'success');
+        return alert_info(0, 'success'.$this->params['symbol']);
     }
 }
