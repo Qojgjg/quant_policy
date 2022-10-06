@@ -18,6 +18,8 @@ return [
     'app\admin\command\Addon',
     'app\admin\command\Api',
 
-    //采集kline数据
+    //kline
     'app\common\command\kline\Collect',
+    //policy
+    'app\common\command\policy\Test',
 ];
