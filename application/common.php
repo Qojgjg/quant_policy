@@ -7,7 +7,6 @@ use think\exception\HttpResponseException;
 use think\Response;
 
 if (!function_exists('__')) {
-
     /**
      * 获取语言变量值
      * @param string $name 语言变量名
@@ -30,7 +29,6 @@ if (!function_exists('__')) {
 }
 
 if (!function_exists('format_bytes')) {
-
     /**
      * 将字节转换为可读文本
      * @param int    $size      大小
@@ -49,7 +47,6 @@ if (!function_exists('format_bytes')) {
 }
 
 if (!function_exists('datetime')) {
-
     /**
      * 将时间戳转换为日期时间
      * @param int    $time   时间戳
@@ -64,7 +61,6 @@ if (!function_exists('datetime')) {
 }
 
 if (!function_exists('human_date')) {
-
     /**
      * 获取语义化时间
      * @param int $time  时间
@@ -78,7 +74,6 @@ if (!function_exists('human_date')) {
 }
 
 if (!function_exists('cdnurl')) {
-
     /**
      * 获取上传资源的CDN的地址
      * @param string  $url    资源相对地址
@@ -100,7 +95,6 @@ if (!function_exists('cdnurl')) {
 
 
 if (!function_exists('is_really_writable')) {
-
     /**
      * 判断文件或文件夹是否可写
      * @param string $file 文件或目录
@@ -129,7 +123,6 @@ if (!function_exists('is_really_writable')) {
 }
 
 if (!function_exists('rmdirs')) {
-
     /**
      * 删除文件夹
      * @param string $dirname  目录
@@ -158,7 +151,6 @@ if (!function_exists('rmdirs')) {
 }
 
 if (!function_exists('copydirs')) {
-
     /**
      * 复制文件夹
      * @param string $source 源文件夹
@@ -195,7 +187,6 @@ if (!function_exists('mb_ucfirst')) {
 }
 
 if (!function_exists('addtion')) {
-
     /**
      * 附加关联字段数据
      * @param array $items  数据列表
@@ -245,7 +236,7 @@ if (!function_exists('addtion')) {
         $result = [];
         foreach ($fieldsArr as $k => $v) {
             if ($v['model']) {
-                $model = new $v['model'];
+                $model = new $v['model']();
             } else {
                 $model = $v['name'] ? \think\Db::name($v['name']) : \think\Db::table($v['table']);
             }
@@ -268,7 +259,6 @@ if (!function_exists('addtion')) {
 }
 
 if (!function_exists('var_export_short')) {
-
     /**
      * 使用短标签打印或返回数组结构
      * @param mixed   $data
@@ -530,7 +520,7 @@ if (!function_exists('alert_info')) {
      * 返回信息格式
      * @date: 2022/07/07  17:09
      */
-    function alert_info($code=0,$msg='success',$data=[])
+    function alert_info($code=0, $msg='success', $data=[])
     {
         return [
             'code'=>$code,

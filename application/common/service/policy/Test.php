@@ -23,6 +23,7 @@ class Test extends BaseService
 
     public function run()
     {
+        // return alert_info(1, 'error');
         return alert_info(0, 'success');
     }
 }

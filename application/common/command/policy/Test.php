@@ -17,24 +17,24 @@ class Test extends Command
     protected function configure()
     {
         $this->setName('policy_test')
-        ->addArgument('money', Argument::REQUIRED, 'how many money ?')
         ->addOption(
             'symbol',
             null,
             Option::VALUE_REQUIRED,
-            'Which symbol do you like?',
-            ['btcusdt','ethusdt','ltcusdt','eosusdt','etcusdt']
+            'Which symbol do you like?'
         )
         ->setDescription('');
     }
 
     protected function execute(Input $input, Output $output)
     {
-        $money=trim($input->getArgument('money'));
-        $output->writeln("money".$money);
         $symbol=trim($input->getOption('symbol'));
-        $output->writeln("symbol".$symbol);
-
+        $list=['btcusdt','ethusdt','ltcusdt','eosusdt','etcusdt'];
+        if (!in_array($symbol, $list)) {
+            $output->writeln("symbol not exist");
+            return;
+        }
+        $output->writeln("symbol:".$symbol);
         $res=(new Service())
             ->setParams([])
             ->run();
@@ -42,6 +42,7 @@ class Test extends Command
             $output->writeln($res['msg']);
             return;
         }
-        $output->writeln("success");
+        $output->writeln($res['msg']);
+        $output->writeln("end.");
     }
 }
